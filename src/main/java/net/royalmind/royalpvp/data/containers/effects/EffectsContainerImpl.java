@@ -59,13 +59,15 @@ public class EffectsContainerImpl extends AbstractDataMap<UUID, EffectsDataConta
         final int minutes = this.config.getInt("Data.Keep.Time-Minutes");
         final int time = (20 * 60) * minutes;
         sendUpdateToDatabase(uuid);
-        if (this.threadsContainer.get(uuid) != null) return;
+        if (this.threadsContainer.contains(uuid)) return;
         final BukkitRunnable runnable = new BukkitRunnable() {
             @Override
             public void run() {
                 final Player player = Bukkit.getPlayer(uuid);
                 if (player != null) return;
                 remove(uuid);
+                if (!(threadsContainer.contains(uuid))) return;
+                threadsContainer.remove(uuid);
             }
         };
         runnable.runTaskLaterAsynchronously(this.plugin, time);

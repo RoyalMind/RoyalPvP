@@ -1,41 +1,21 @@
 package net.royalmind.royalpvp.effects;
 
-import net.royalmind.royalpvp.RoyalPvP;
-import net.royalmind.royalpvp.effects.types.AbstractEffect;
-import net.royalmind.royalpvp.effects.types.BloodEffect;
-import net.royalmind.royalpvp.effects.types.OneKillEffect;
-import net.royalmind.royalpvp.effects.types.SquidEffect;
-import org.bukkit.entity.LivingEntity;
+import net.royalmind.royalpvp.data.containers.effects.EffectsContainerImpl;
+import net.royalmind.royalpvp.data.containers.effects.EffectsDataContainer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class EffectsHandler implements Listener {
 
-    private RoyalPvP royalPvP;
+    private JavaPlugin plugin;
+    private EffectsContainerImpl effectsContainer;
 
-    public EffectsHandler(final RoyalPvP royalPvP) {
-        this.royalPvP = royalPvP;
-    }
-
-    @EventHandler
-    public void onKillMob(final EntityDeathEvent event) {
-        final LivingEntity entity = event.getEntity();
-        final Player player = entity.getKiller();
-
-        switch (entity.getType()) {
-            case COW:
-                new OneKillEffect(player, this.royalPvP).run();
-                break;
-            case PIG:
-                new BloodEffect(player, this.royalPvP).run();
-                break;
-            case SHEEP:
-                new SquidEffect(player, this.royalPvP).run();
-                break;
-        }
+    public EffectsHandler(final JavaPlugin plugin, final EffectsContainerImpl effectsContainer) {
+        this.plugin = plugin;
+        this.effectsContainer = effectsContainer;
     }
 
     @EventHandler
@@ -46,12 +26,10 @@ public class EffectsHandler implements Listener {
     }
 
     public void playEffect(final Player killer, final Player dead) {
-        //Obtener que tipo de efecto tiene
-        //si es que tiene uno buscar cual es con un switch y reproducirlo
-        AbstractEffect effect = null;
-        if (killer.isOp()) {
-            effect = new OneKillEffect(dead, this.royalPvP);
-        }
-        if (effect != null) effect.run();
+        final EffectsDataContainer effectsDataContainer = this.effectsContainer.get(killer.getUniqueId());
+        if (effectsDataContainer == null) return;
+        final String currentEffect = effectsDataContainer.getCurrentEffect();
+        final EffectType effectType = EffectType.getByID(currentEffect);
+        effectType.run(this.plugin, killer, dead);
     }
 }

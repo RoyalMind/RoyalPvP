@@ -22,4 +22,8 @@ public abstract class AbstractDataMap<K, V> {
     public void remove(final K key) {
         this.dataMap.remove(key);
     }
+
+    public Boolean contains(final K key) {
+        return this.dataMap.containsKey(key);
+    }
 }

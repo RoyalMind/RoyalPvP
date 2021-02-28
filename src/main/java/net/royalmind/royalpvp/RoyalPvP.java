@@ -38,14 +38,14 @@ public final class RoyalPvP extends JavaPlugin {
         }
         final FileConfiguration config = files.getConfig().getFileConfiguration();
         final FileConfiguration configEffects = files.getEffects().getFileConfiguration();
-        this.effectsContainer = new EffectsContainerImpl(this, config, this.threadsContainer);
         this.inventoriesContainer = new InventoriesContainerImpl(this, configEffects);
         this.threadsContainer = new ThreadsContainerImpl();
+        this.effectsContainer = new EffectsContainerImpl(this, config, this.threadsContainer);
         this.inventoryManager = new InventoryManager(this);
         this.inventoryManager.init();
         final PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new InventoryHandler(this.effectsContainer, this.inventoriesContainer, this.inventoryManager, configEffects), this);
-        pluginManager.registerEvents(new EffectsHandler(this), this);
+        pluginManager.registerEvents(new EffectsHandler(this, this.effectsContainer), this);
         pluginManager.registerEvents(new DataHandler(config, this), this);
     }
 
@@ -55,10 +55,6 @@ public final class RoyalPvP extends JavaPlugin {
         try {
             this.dataSource.close();
         } catch (final Exception ex) { }
-    }
-
-    public Files getFiles() {
-        return files;
     }
 
     public DataSource getDataSource() {

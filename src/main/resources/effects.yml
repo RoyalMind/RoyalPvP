@@ -1,5 +1,18 @@
 Effects:
   Kills:
+    None:
+      ID: 'none'
+      Permission: 'royalmind.effect.none'
+      Name: '&cNinguno'
+      Icon: 'BARRIER'
+      Amount: 1
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'
     Blood:
       ID: 'blood'
       Permission: 'royalmind.effect.blood'
@@ -13,11 +26,24 @@ Effects:
           - 'Lore si es que no tiene el permiso'
         Selected:
           - 'Lore si es que lo tiene seleccionado'
-    None:
-      ID: 'none'
-      Permission: 'royalmind.effect.none'
-      Name: '&cNinguno'
-      Icon: 'BARRIER'
+    OneKill:
+      ID: 'onekill'
+      Permission: 'royalmind.effect.onekill'
+      Name: '&a+1 Kill'
+      Icon: 'EMERALD'
+      Amount: 1
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'
+    Squid:
+      ID: 'squid'
+      Permission: 'royalmind.effect.squid'
+      Name: '&9Calamar explosivo'
+      Icon: 'TRIPWIRE_HOOK'
       Amount: 1
       Lore:
         HasPermission:
