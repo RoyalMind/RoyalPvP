@@ -1,0 +1,8 @@
+DataBase:
+  Tables:
+    Main: 'players'
+    Effects: 'effects'
+Data:
+  Keep:
+    Enable: true
+    Time-Minutes: 10

@@ -1,0 +1,28 @@
+Effects:
+  Kills:
+    Blood:
+      ID: 'blood'
+      Permission: 'royalmind.effect.blood'
+      Name: '&cSangre'
+      Icon: 'REDSTONE_BLOCK'
+      Amount: 1
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'
+    None:
+      ID: 'none'
+      Permission: 'royalmind.effect.none'
+      Name: '&cNinguno'
+      Icon: 'BARRIER'
+      Amount: 1
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'

@@ -1,0 +1,21 @@
+Leagues:
+  Bronce:
+    Name: '&7Bronce'
+    Level:
+      Minimum: 0
+      Maximum: 25
+  Plata:
+    Name: '&fPlata'
+    Level:
+      Minimum: 26
+      Maximum: 50
+  Oro:
+    Name: '&eOro'
+    Level:
+      Minimum: 51
+      Maximum: 75
+  Diamante:
+    Name: '&bDiamante'
+    Level:
+      Minimum: 76
+      Maximum: -1

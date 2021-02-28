@@ -1,0 +1,6 @@
+name: RoyalPvP
+version: ${project.version}
+main: net.royalmind.royalpvp.RoyalPvP
+api-version: 1.13
+authors: [ImSrPanda]
+description: Ligas para modalidades de PvP
