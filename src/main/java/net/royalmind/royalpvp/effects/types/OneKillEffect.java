@@ -1,6 +1,7 @@
 package net.royalmind.royalpvp.effects.types;
 
 import net.royalmind.royalpvp.utils.Chat;
+import net.royalmind.royalpvp.utils.PlayersData;
 import net.royalmind.royalpvp.utils.RandomLocation;
 import net.royalmind.royalpvp.utils.Sounds;
 import org.bukkit.Location;
@@ -12,8 +13,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class OneKillEffect extends AbstractEffect {
 
-    public OneKillEffect(final Player player, final JavaPlugin plugin) {
-        super(player, plugin);
+    public OneKillEffect(final Player player, final JavaPlugin plugin, final PlayersData playersData) {
+        super(player, plugin, playersData);
     }
 
     @Override
@@ -23,7 +24,9 @@ public class OneKillEffect extends AbstractEffect {
             @Override
             public void run() {
                 final Location location = getPlayer().getLocation();
-                getPlayer().playSound(location, Sounds.SUCCESSFUL_HIT.bukkitSound(), 0.5f, 1.5f);
+                for (final Player player : getPlayersData().getPlayerHaveEnableSounds()) {
+                    player.playSound(location, Sounds.SUCCESSFUL_HIT.bukkitSound(), 0.5f, 1.5f);
+                }
                 generateArmortand(location.clone().add(
                         RandomLocation.randomBetween(-1f, 1f),
                         0,

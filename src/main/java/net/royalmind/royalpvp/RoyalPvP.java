@@ -9,6 +9,7 @@ import net.royalmind.royalpvp.data.containers.inventory.InventoriesContainerImpl
 import net.royalmind.royalpvp.data.containers.threads.ThreadsContainerImpl;
 import net.royalmind.royalpvp.effects.EffectsHandler;
 import net.royalmind.royalpvp.inventory.InventoryHandler;
+import net.royalmind.royalpvp.utils.PlayersData;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
@@ -20,6 +21,7 @@ public final class RoyalPvP extends JavaPlugin {
     private Files files;
 
     private InventoryManager inventoryManager;
+    private PlayersData playersData;
     //Containers
     private EffectsContainerImpl effectsContainer;
     private InventoriesContainerImpl inventoriesContainer;
@@ -43,6 +45,7 @@ public final class RoyalPvP extends JavaPlugin {
         this.effectsContainer = new EffectsContainerImpl(this, config, this.threadsContainer);
         this.inventoryManager = new InventoryManager(this);
         this.inventoryManager.init();
+        this.playersData = new PlayersData(this.effectsContainer);
         final PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new InventoryHandler(this.effectsContainer, this.inventoriesContainer, this.inventoryManager, configEffects), this);
         pluginManager.registerEvents(new EffectsHandler(this, this.effectsContainer), this);
