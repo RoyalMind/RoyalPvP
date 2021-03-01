@@ -6,6 +6,9 @@ Effects:
       Name: '&cNinguno'
       Icon: 'BARRIER'
       Amount: 1
+      Slot:
+        Row: 0
+        Colum: 1
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -19,6 +22,9 @@ Effects:
       Name: '&cSangre'
       Icon: 'REDSTONE_BLOCK'
       Amount: 1
+      Slot:
+        Row: 0
+        Colum: 1
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -32,6 +38,9 @@ Effects:
       Name: '&a+1 Kill'
       Icon: 'EMERALD'
       Amount: 1
+      Slot:
+        Row: 0
+        Colum: 1
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -45,6 +54,9 @@ Effects:
       Name: '&9Calamar explosivo'
       Icon: 'TRIPWIRE_HOOK'
       Amount: 1
+      Slot:
+        Row: 0
+        Colum: 1
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'

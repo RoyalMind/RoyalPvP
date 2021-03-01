@@ -1,5 +1,6 @@
 package net.royalmind.royalpvp.data.containers.inventory;
 
+import fr.minuskube.inv.content.SlotPos;
 import net.royalmind.royalpvp.RoyalPvP;
 import net.royalmind.royalpvp.data.containers.AbstractDataMap;
 import net.royalmind.royalpvp.data.containers.effects.EffectsDataContainer;
@@ -34,8 +35,11 @@ public class InventoriesContainerImpl extends AbstractDataMap<EffectType, Invent
             final ItemStack item = this.buildItemStack(rootPath);
             final String idEffect = this.configEffects.getString(rootPath + "ID");
             final String permissionEffect = this.configEffects.getString(rootPath + "Permission");
+            final int itemRow = this.configEffects.getInt(rootPath + "Slot.Row");
+            final int itemColum = this.configEffects.getInt(rootPath + "Slot.Colum");
+            final SlotPos slotPos = new SlotPos(itemRow, itemColum);
             final InventoriesDataContainer invDataContainer = new InventoriesDataContainer(
-                    idEffect, permissionEffect, item
+                    idEffect, permissionEffect, item, slotPos
             );
             List<String> currentLore;
             currentLore = this.configEffects.getStringList(rootPath + "Lore.HasPermission");

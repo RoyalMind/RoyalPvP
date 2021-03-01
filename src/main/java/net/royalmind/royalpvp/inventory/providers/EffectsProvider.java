@@ -3,6 +3,7 @@ package net.royalmind.royalpvp.inventory.providers;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
+import fr.minuskube.inv.content.SlotPos;
 import net.royalmind.royalpvp.data.containers.effects.EffectsContainerImpl;
 import net.royalmind.royalpvp.data.containers.effects.EffectsDataContainer;
 import net.royalmind.royalpvp.data.containers.inventory.InventoriesContainerImpl;
@@ -29,7 +30,6 @@ public class EffectsProvider implements InventoryProvider {
         final EffectsDataContainer effectsContainer = this.effectsContainer.get(player.getUniqueId());
         for (final EffectType type : EffectType.values()) {
             if (type == null) continue;
-            player.sendMessage(type.getId());
             final ClickableItem clickableItem = ClickableItem.of(this.inventoriesContainer.getItemWithLore(type, player), inventoryClickEvent -> {
                 final InventoriesDataContainer.InventoriesDataTypes inventoryDataType = this.inventoriesContainer.getInventoryDataType(type, player);
                 if (inventoryDataType == null) return;
@@ -47,7 +47,8 @@ public class EffectsProvider implements InventoryProvider {
                 }
                 player.sendMessage(Chat.translate(message));
             });
-            contents.add(clickableItem);
+            final SlotPos slot = this.inventoriesContainer.get(type).getSlot();
+            contents.set(slot, clickableItem);
         }
     }
 

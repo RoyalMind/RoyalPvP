@@ -1,5 +1,6 @@
 package net.royalmind.royalpvp.data.containers.inventory;
 
+import fr.minuskube.inv.content.SlotPos;
 import net.royalmind.royalpvp.data.containers.AbstractDataMap;
 import org.bukkit.inventory.ItemStack;
 
@@ -10,11 +11,13 @@ public class InventoriesDataContainer extends AbstractDataMap<InventoriesDataCon
     private final String id;
     private final String permission;
     private final ItemStack item;
+    private final SlotPos slotPos;
 
-    public InventoriesDataContainer(final String id, final String permission, final ItemStack item) {
+    public InventoriesDataContainer(final String id, final String permission, final ItemStack item, final SlotPos slotPos) {
         this.id = id;
         this.permission = permission;
         this.item = item;
+        this.slotPos = slotPos;
     }
 
     public enum InventoriesDataTypes {
@@ -31,6 +34,10 @@ public class InventoriesDataContainer extends AbstractDataMap<InventoriesDataCon
 
     public ItemStack getItem() {
         return item;
+    }
+
+    public SlotPos getSlot() {
+        return slotPos;
     }
 
     @Override
