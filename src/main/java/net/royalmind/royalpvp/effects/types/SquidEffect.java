@@ -37,7 +37,7 @@ public class SquidEffect extends AbstractEffect {
                 armorStand.teleport(armorStand.getLocation().add(0, 0.2, 0));
                 armorStand.setPassenger(squid);
                 if (time <= 2) {
-                    for (final Player player : getPlayersData().getPlayerHaveEnableSounds()) {
+                    for (final Player player : getPlayersData().getPlayersHave(PlayersData.DataType.SOUNDS)) {
                         player.playSound(armorStand.getLocation(), Sounds.ITEM_PICKUP.bukkitSound(), 1, Math.abs(3 - time));
                     }
                 }
@@ -47,13 +47,13 @@ public class SquidEffect extends AbstractEffect {
                     squid.remove();
                     armorStand.remove();
                     ParticleEffect.LAVA.display(armorStand.getLocation(),
-                            0, 0, 0, 0, 25, null, getPlayersData().getPlayerHaveEnableParticles());
-                    for (final Player player : getPlayersData().getPlayerHaveEnableSounds()) {
+                            0, 0, 0, 0, 25, null, getPlayersData().getPlayersHave(PlayersData.DataType.PARTICLES));
+                    for (final Player player : getPlayersData().getPlayersHave(PlayersData.DataType.SOUNDS)) {
                         player.playSound(armorStand.getLocation(), Sounds.EXPLODE.bukkitSound(), 1, 1);
                     }
                     return;
                 }
-                ParticleEffect.FIREWORKS_SPARK.display(armorStand.getLocation(), getPlayersData().getPlayerHaveEnableParticles());
+                ParticleEffect.FIREWORKS_SPARK.display(armorStand.getLocation(), getPlayersData().getPlayersHave(PlayersData.DataType.PARTICLES));
             }
         }.runTaskTimer(this.getPlugin(), 0L, 1L);
     }

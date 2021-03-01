@@ -2,6 +2,7 @@ package net.royalmind.royalpvp.effects;
 
 import net.royalmind.royalpvp.data.containers.effects.EffectsContainerImpl;
 import net.royalmind.royalpvp.data.containers.effects.EffectsDataContainer;
+import net.royalmind.royalpvp.utils.PlayersData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,10 +13,12 @@ public class EffectsHandler implements Listener {
 
     private JavaPlugin plugin;
     private EffectsContainerImpl effectsContainer;
+    private PlayersData playersData;
 
-    public EffectsHandler(final JavaPlugin plugin, final EffectsContainerImpl effectsContainer) {
+    public EffectsHandler(final JavaPlugin plugin, final EffectsContainerImpl effectsContainer, final PlayersData playersData) {
         this.plugin = plugin;
         this.effectsContainer = effectsContainer;
+        this.playersData = playersData;
     }
 
     @EventHandler
@@ -30,6 +33,6 @@ public class EffectsHandler implements Listener {
         if (effectsDataContainer == null) return;
         final String currentEffect = effectsDataContainer.getCurrentEffect();
         final EffectType effectType = EffectType.getByID(currentEffect);
-        effectType.run(this.plugin, killer, dead);
+        effectType.run(this.plugin, killer, dead, this.playersData);
     }
 }

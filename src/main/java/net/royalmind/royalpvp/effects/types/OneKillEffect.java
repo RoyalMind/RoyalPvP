@@ -24,7 +24,7 @@ public class OneKillEffect extends AbstractEffect {
             @Override
             public void run() {
                 final Location location = getPlayer().getLocation();
-                for (final Player player : getPlayersData().getPlayerHaveEnableSounds()) {
+                for (final Player player : getPlayersData().getPlayersHave(PlayersData.DataType.SOUNDS)) {
                     player.playSound(location, Sounds.SUCCESSFUL_HIT.bukkitSound(), 0.5f, 1.5f);
                 }
                 generateArmortand(location.clone().add(

@@ -48,7 +48,7 @@ public final class RoyalPvP extends JavaPlugin {
         this.playersData = new PlayersData(this.effectsContainer);
         final PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new InventoryHandler(this.effectsContainer, this.inventoriesContainer, this.inventoryManager, configEffects), this);
-        pluginManager.registerEvents(new EffectsHandler(this, this.effectsContainer), this);
+        pluginManager.registerEvents(new EffectsHandler(this, this.effectsContainer, this.playersData), this);
         pluginManager.registerEvents(new DataHandler(config, this), this);
     }
 

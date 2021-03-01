@@ -23,9 +23,9 @@ public class BloodEffect extends AbstractEffect {
                 location.add(0, 1, 0),
                 0, 0, 0, 0.1f, 50,
                 new ItemTexture(new ItemStack(Material.REDSTONE_BLOCK)),
-                getPlayersData().getPlayerHaveEnableParticles()
+                getPlayersData().getPlayersHave(PlayersData.DataType.PARTICLES)
         );
-        for (final Player player : getPlayersData().getPlayerHaveEnableSounds()) {
+        for (final Player player : getPlayersData().getPlayersHave(PlayersData.DataType.SOUNDS)) {
             player.playSound(location, Sounds.IRONGOLEM_HIT.bukkitSound(), 1, 0.7f);
         }
     }

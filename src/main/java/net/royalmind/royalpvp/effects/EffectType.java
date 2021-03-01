@@ -4,6 +4,7 @@ import net.royalmind.royalpvp.effects.types.AbstractEffect;
 import net.royalmind.royalpvp.effects.types.BloodEffect;
 import net.royalmind.royalpvp.effects.types.OneKillEffect;
 import net.royalmind.royalpvp.effects.types.SquidEffect;
+import net.royalmind.royalpvp.utils.PlayersData;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,17 +31,17 @@ public enum EffectType {
         }
     }
 
-    public void run(final JavaPlugin plugin, final Player killer, final Player dead) {
+    public void run(final JavaPlugin plugin, final Player killer, final Player dead, final PlayersData playersData) {
         AbstractEffect abstractEffect = null;
         switch (this) {
             case KILL_BLOOD:
-                abstractEffect = new BloodEffect(dead, plugin);
+                abstractEffect = new BloodEffect(dead, plugin, playersData);
                 break;
             case KILL_SQUID:
-                abstractEffect = new SquidEffect(dead, plugin);
+                abstractEffect = new SquidEffect(dead, plugin, playersData);
                 break;
             case KILL_ONEKILL:
-                abstractEffect = new OneKillEffect(killer, plugin);
+                abstractEffect = new OneKillEffect(killer, plugin, playersData);
                 break;
         }
         if (abstractEffect == null) return;
