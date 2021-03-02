@@ -8,7 +8,7 @@ Effects:
       Amount: 1
       Slot:
         Row: 0
-        Colum: 1
+        Colum: 0
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -40,7 +40,7 @@ Effects:
       Amount: 1
       Slot:
         Row: 0
-        Colum: 1
+        Colum: 2
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -56,7 +56,103 @@ Effects:
       Amount: 1
       Slot:
         Row: 0
-        Colum: 1
+        Colum: 3
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'
+    Explosion:
+      ID: 'explosion'
+      Permission: 'royalmind.effect.explosion'
+      Name: '&cJugador explosivo'
+      Icon: 'TNT'
+      Amount: 1
+      Slot:
+        Row: 0
+        Colum: 4
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'
+    Light:
+      ID: 'light'
+      Permission: 'royalmind.effect.light'
+      Name: '&eRayo'
+      Icon: 'GOLD_INGOT'
+      Amount: 1
+      Slot:
+        Row: 0
+        Colum: 5
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'
+    Skull:
+      ID: 'skull'
+      Permission: 'royalmind.effect.skull'
+      Name: '&eCabeza de jugador'
+      Icon: 'ARROW'
+      Amount: 1
+      Slot:
+        Row: 0
+        Colum: 6
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'
+    TNT:
+      ID: 'tnt'
+      Permission: 'royalmind.effect.tnt'
+      Name: '&cTNT'
+      Icon: 'TNT'
+      Amount: 1
+      Slot:
+        Row: 0
+        Colum: 7
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'
+    Fire:
+      ID: 'fire'
+      Permission: 'royalmind.effect.fire'
+      Name: '&4Fuego'
+      Icon: 'FLINT_AND_STEEL'
+      Amount: 1
+      Slot:
+        Row: 0
+        Colum: 8
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'
+    Gold:
+      ID: 'gold'
+      Permission: 'royalmind.effect.gold'
+      Name: '&eOro'
+      Icon: 'GOLD_BLOCK'
+      Amount: 1
+      Slot:
+        Row: 1
+        Colum: 0
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'

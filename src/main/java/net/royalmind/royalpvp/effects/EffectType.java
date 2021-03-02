@@ -1,16 +1,15 @@
 package net.royalmind.royalpvp.effects;
 
-import net.royalmind.royalpvp.effects.types.AbstractEffect;
-import net.royalmind.royalpvp.effects.types.BloodEffect;
-import net.royalmind.royalpvp.effects.types.OneKillEffect;
-import net.royalmind.royalpvp.effects.types.SquidEffect;
+import net.royalmind.royalpvp.effects.types.*;
 import net.royalmind.royalpvp.utils.PlayersData;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public enum EffectType {
 
-    NONE("none"), KILL_BLOOD("blood"), KILL_ONEKILL("onekill"), KILL_SQUID("squid");
+    NONE("none"), KILL_BLOOD("blood"), KILL_ONEKILL("onekill"), KILL_SQUID("squid"),
+    KILL_EXPLOSION("explosion"), KILL_LIGHT("light"), KILL_SKULL("skull"), KILL_TNT("tnt"),
+    KILL_FIRE("fire"), KILL_GOLDDROP("gold");
 
     private String id;
 
@@ -26,6 +25,18 @@ public enum EffectType {
                 return KILL_ONEKILL;
             case "squid":
                 return KILL_SQUID;
+            case "explosion":
+                return KILL_EXPLOSION;
+            case "light":
+                return KILL_LIGHT;
+            case "skull":
+                return KILL_SKULL;
+            case "tnt":
+                return KILL_TNT;
+            case "fire":
+                return KILL_FIRE;
+            case "gold":
+                return KILL_GOLDDROP;
             default:
                 return NONE;
         }
@@ -42,6 +53,24 @@ public enum EffectType {
                 break;
             case KILL_ONEKILL:
                 abstractEffect = new OneKillEffect(killer, plugin, playersData);
+                break;
+            case KILL_EXPLOSION:
+                abstractEffect = new ExplosionEffect(dead, plugin, playersData);
+                break;
+            case KILL_LIGHT:
+                abstractEffect = new LightEffect(dead, plugin, playersData);
+                break;
+            case KILL_SKULL:
+                abstractEffect = new SkullEffect(dead, plugin, playersData);
+                break;
+            case KILL_TNT:
+                abstractEffect = new TNTEffect(dead, plugin, playersData);
+                break;
+            case KILL_FIRE:
+                abstractEffect = new FireEffect(killer, plugin, playersData);
+                break;
+            case KILL_GOLDDROP:
+                abstractEffect = new GoldDropEffect(killer, plugin, playersData);
                 break;
         }
         if (abstractEffect == null) return;
