@@ -1,6 +1,6 @@
 name: RoyalPvP
 version: ${project.version}
 main: net.royalmind.royalpvp.RoyalPvP
-api-version: 1.13
 authors: [ImSrPanda]
+depend: [Vault]
 description: Caracteristicas para modalidades de PvP
