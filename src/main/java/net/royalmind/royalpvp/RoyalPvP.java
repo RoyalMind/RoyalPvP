@@ -7,6 +7,7 @@ import net.royalmind.royalpvp.data.DataSource;
 import net.royalmind.royalpvp.data.containers.effects.EffectsContainerImpl;
 import net.royalmind.royalpvp.data.containers.inventory.InventoriesContainerImpl;
 import net.royalmind.royalpvp.data.containers.threads.ThreadsContainerImpl;
+import net.royalmind.royalpvp.dependencies.VaultDependency;
 import net.royalmind.royalpvp.effects.EffectsHandler;
 import net.royalmind.royalpvp.inventory.InventoryHandler;
 import net.royalmind.royalpvp.utils.PlayersData;
@@ -26,6 +27,8 @@ public final class RoyalPvP extends JavaPlugin {
     private EffectsContainerImpl effectsContainer;
     private InventoriesContainerImpl inventoriesContainer;
     private ThreadsContainerImpl threadsContainer;
+    //Dependencies
+    private VaultDependency vaultDependency;
 
     @Override
     public void onEnable() {
@@ -34,8 +37,12 @@ public final class RoyalPvP extends JavaPlugin {
         try {
             this.dataSource = new DataSource(this);
         } catch (final Exception ex) {
-            this.getPluginLoader().disablePlugin(this);
-            this.getLogger().severe("Database not found, plugin has been disabled.");
+            this.forceDisable("Database not found, plugin has been disabled.");
+            return;
+        }
+        this.vaultDependency = new VaultDependency(this.getServer());
+        if (!(this.vaultDependency.haveVault())) {
+            this.forceDisable("Vault not found, plugin has been disabled.");
             return;
         }
         final FileConfiguration config = files.getConfig().getFileConfiguration();
@@ -58,6 +65,11 @@ public final class RoyalPvP extends JavaPlugin {
         try {
             this.dataSource.close();
         } catch (final Exception ex) { }
+    }
+
+    private void forceDisable(final String message) {
+        this.getPluginLoader().disablePlugin(this);
+        this.getLogger().severe(message);
     }
 
     public DataSource getDataSource() {
