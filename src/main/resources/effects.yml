@@ -9,6 +9,9 @@ Effects:
       Slot:
         Row: 0
         Colum: 0
+      Buy:
+        Price: 0.0
+        Need: 'none'
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -25,6 +28,9 @@ Effects:
       Slot:
         Row: 0
         Colum: 1
+      Buy:
+        Price: 10.5
+        Need: 'none'
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -41,6 +47,9 @@ Effects:
       Slot:
         Row: 0
         Colum: 2
+      Buy:
+        Price: 10.5
+        Need: 'none'
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -57,6 +66,9 @@ Effects:
       Slot:
         Row: 0
         Colum: 3
+      Buy:
+        Price: 10.5
+        Need: 'none'
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -73,6 +85,9 @@ Effects:
       Slot:
         Row: 0
         Colum: 4
+      Buy:
+        Price: 10.5
+        Need: 'none'
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -89,6 +104,9 @@ Effects:
       Slot:
         Row: 0
         Colum: 5
+      Buy:
+        Price: 10.5
+        Need: 'none'
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -105,6 +123,9 @@ Effects:
       Slot:
         Row: 0
         Colum: 6
+      Buy:
+        Price: 10.5
+        Need: 'none'
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -121,6 +142,9 @@ Effects:
       Slot:
         Row: 0
         Colum: 7
+      Buy:
+        Price: 10.5
+        Need: 'none'
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -137,6 +161,9 @@ Effects:
       Slot:
         Row: 0
         Colum: 8
+      Buy:
+        Price: 10.5
+        Need: 'none'
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
@@ -153,6 +180,66 @@ Effects:
       Slot:
         Row: 1
         Colum: 0
+      Buy:
+        Price: 10.5
+        Need: 'none'
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'
+    Sword:
+      ID: 'sword'
+      Permission: 'royalmind.effect.sword'
+      Name: '&eEspada'
+      Icon: 'DIAMOND_SWORD'
+      Amount: 1
+      Slot:
+        Row: 1
+        Colum: 1
+      Buy:
+        Price: 10.5
+        Need: 'none'
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'
+    Rekt:
+      ID: 'rekt'
+      Permission: 'royalmind.effect.rekt'
+      Name: '&bRekt'
+      Icon: 'ARMOR_STAND'
+      Amount: 1
+      Slot:
+        Row: 1
+        Colum: 2
+      Buy:
+        Price: 10.5
+        Need: 'none'
+      Lore:
+        HasPermission:
+          - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
+        DontHasPermission:
+          - 'Lore si es que no tiene el permiso'
+        Selected:
+          - 'Lore si es que lo tiene seleccionado'
+    Break:
+      ID: 'break'
+      Permission: 'royalmind.effect.break'
+      Name: '&7Destruido'
+      Icon: 'GLASS'
+      Amount: 1
+      Slot:
+        Row: 1
+        Colum: 3
+      Buy:
+        Price: 10.5
+        Need: 'none'
       Lore:
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'

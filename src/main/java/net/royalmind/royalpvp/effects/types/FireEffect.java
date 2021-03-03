@@ -26,7 +26,8 @@ public class FireEffect extends AbstractEffect {
                     player.playSound(location, Sounds.GHAST_FIREBALL.bukkitSound(), 0.3f, 1f);
                 }
                 ParticleEffect.FLAME.display(location, getPlayersData().getPlayersHave(PlayersData.DataType.PARTICLES));
-                ParticleEffect.LAVA.display(location, new Vector(0.2, 1, 0.2), 0.35f, 15, null, getPlayersData().getPlayersHave(PlayersData.DataType.PARTICLES));
+                ParticleEffect.LAVA.display(location, new Vector(0.2, 1, 0.2), 0.35f, 15, null,
+                        getPlayersData().getPlayersHave(PlayersData.DataType.PARTICLES));
                 ParticleEffect.SMOKE_NORMAL.display(location, getPlayersData().getPlayersHave(PlayersData.DataType.PARTICLES));
                 if (time <= 0) {
                     cancel();

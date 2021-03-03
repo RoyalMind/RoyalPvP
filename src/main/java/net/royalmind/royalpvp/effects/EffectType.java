@@ -9,7 +9,8 @@ public enum EffectType {
 
     NONE("none"), KILL_BLOOD("blood"), KILL_ONEKILL("onekill"), KILL_SQUID("squid"),
     KILL_EXPLOSION("explosion"), KILL_LIGHT("light"), KILL_SKULL("skull"), KILL_TNT("tnt"),
-    KILL_FIRE("fire"), KILL_GOLDDROP("gold");
+    KILL_FIRE("fire"), KILL_GOLDDROP("gold"), KILL_SWORD("sword"), KILL_REKT("rekt"),
+    KILL_BREAK("break");
 
     private String id;
 
@@ -37,6 +38,12 @@ public enum EffectType {
                 return KILL_FIRE;
             case "gold":
                 return KILL_GOLDDROP;
+            case "sword":
+                return KILL_SWORD;
+            case "rekt":
+                return KILL_REKT;
+            case "break":
+                return KILL_BREAK;
             default:
                 return NONE;
         }
@@ -71,6 +78,15 @@ public enum EffectType {
                 break;
             case KILL_GOLDDROP:
                 abstractEffect = new GoldDropEffect(killer, plugin, playersData);
+                break;
+            case KILL_SWORD:
+                abstractEffect = new SwordEffect(dead, plugin, playersData);
+                break;
+            case KILL_REKT:
+                abstractEffect = new RektEffect(dead, plugin, playersData);
+                break;
+            case KILL_BREAK:
+                abstractEffect = new BreakEffect(dead, plugin, playersData);
                 break;
         }
         if (abstractEffect == null) return;
