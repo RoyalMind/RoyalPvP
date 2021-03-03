@@ -38,8 +38,10 @@ public class InventoriesContainerImpl extends AbstractDataMap<EffectType, Invent
             final int itemRow = this.configEffects.getInt(rootPath + "Slot.Row");
             final int itemColum = this.configEffects.getInt(rootPath + "Slot.Colum");
             final SlotPos slotPos = new SlotPos(itemRow, itemColum);
+            final double price = this.configEffects.getDouble(rootPath + "Buy.Price");
+            final String permissionNeeded = this.configEffects.getString(rootPath + "Buy.Need");
             final InventoriesDataContainer invDataContainer = new InventoriesDataContainer(
-                    idEffect, permissionEffect, item, slotPos
+                    idEffect, permissionEffect, item, slotPos, price, permissionNeeded
             );
             List<String> currentLore;
             currentLore = this.configEffects.getStringList(rootPath + "Lore.HasPermission");
@@ -69,7 +71,7 @@ public class InventoriesContainerImpl extends AbstractDataMap<EffectType, Invent
     public ItemStack getItemWithLore(final EffectType effectType, final Player player) {
         final InventoriesDataContainer invDataContainer = get(effectType);
         final List<String> lore = invDataContainer.get(getInventoryDataType(effectType, player));
-        return setLore(invDataContainer.getItem(), lore);
+        return setLore(invDataContainer.getItem(), lore, player);
     }
 
     public InventoriesDataContainer.InventoriesDataTypes getInventoryDataType(final EffectType effectType, final Player player) {
@@ -88,11 +90,15 @@ public class InventoriesContainerImpl extends AbstractDataMap<EffectType, Invent
         }
     }
 
-    private ItemStack setLore(final ItemStack itemStack, final List<String> lore) {
+    private ItemStack setLore(final ItemStack itemStack, final List<String> lore, final Player player) {
         final ItemMeta itemMeta = itemStack.getItemMeta();
         final List<String> subLore = new ArrayList<>();
+        String text;
         for (final String str : lore) {
-            subLore.add(Chat.translate(str));
+            text = Chat.translate(str)
+                    .replaceAll("%player%", player.getName()
+            );
+            subLore.add(text);
         }
         itemMeta.setLore(subLore);
         itemStack.setItemMeta(itemMeta);
