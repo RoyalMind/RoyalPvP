@@ -12,7 +12,10 @@ Effects:
       Buy:
         Price: 0.0
         Need: 'none'
+        Command: 'none'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:
@@ -31,7 +34,10 @@ Effects:
       Buy:
         Price: 10.5
         Need: 'none'
+        Command: 'lp user %player% permission set royalmind.effect.blood true'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:
@@ -50,7 +56,10 @@ Effects:
       Buy:
         Price: 10.5
         Need: 'none'
+        Command: 'lp user %player% permission set royalmind.effect.onekill true'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:
@@ -69,7 +78,10 @@ Effects:
       Buy:
         Price: 10.5
         Need: 'none'
+        Command: 'lp user %player% permission set royalmind.effect.squid true'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:
@@ -88,7 +100,10 @@ Effects:
       Buy:
         Price: 10.5
         Need: 'none'
+        Command: 'lp user %player% permission set royalmind.effect.explosion true'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:
@@ -107,7 +122,10 @@ Effects:
       Buy:
         Price: 10.5
         Need: 'none'
+        Command: 'lp user %player% permission set royalmind.effect.light true'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:
@@ -126,7 +144,10 @@ Effects:
       Buy:
         Price: 10.5
         Need: 'none'
+        Command: 'lp user %player% permission set royalmind.effect.skull true'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:
@@ -145,7 +166,10 @@ Effects:
       Buy:
         Price: 10.5
         Need: 'none'
+        Command: 'lp user %player% permission set royalmind.effect.tnt true'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:
@@ -164,7 +188,10 @@ Effects:
       Buy:
         Price: 10.5
         Need: 'none'
+        Command: 'lp user %player% permission set royalmind.effect.fire true'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:
@@ -183,7 +210,10 @@ Effects:
       Buy:
         Price: 10.5
         Need: 'none'
+        Command: 'lp user %player% permission set royalmind.effect.gold true'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:
@@ -202,7 +232,10 @@ Effects:
       Buy:
         Price: 10.5
         Need: 'none'
+        Command: 'lp user %player% permission set royalmind.effect.sword true'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:
@@ -221,7 +254,10 @@ Effects:
       Buy:
         Price: 10.5
         Need: 'none'
+        Command: 'lp user %player% permission set royalmind.effect.rekt true'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:
@@ -240,7 +276,10 @@ Effects:
       Buy:
         Price: 10.5
         Need: 'none'
+        Command: 'lp user %player% permission set royalmind.effect.break true'
       Lore:
+        DontHasPermissionNeeded:
+          - 'Lore si es que el jugador no tiene el permiso requerido'
         HasPermission:
           - 'Lore si es que tiene el permiso pero no lo tiene seleccionado'
         DontHasPermission:

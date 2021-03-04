@@ -14,18 +14,21 @@ public class InventoriesDataContainer extends AbstractDataMap<InventoriesDataCon
     private final SlotPos slotPos;
     private final double price;
     private final String permissionNeeded;
+    private final String command;
 
-    public InventoriesDataContainer(final String id, final String permission, final ItemStack item, final SlotPos slotPos, final double price, final String permissionNeeded) {
+    public InventoriesDataContainer(final String id, final String permission, final ItemStack item, final SlotPos slotPos,
+                                    final double price, final String permissionNeeded, final String command) {
         this.id = id;
         this.permission = permission;
         this.item = item;
         this.slotPos = slotPos;
         this.price = price;
         this.permissionNeeded = permissionNeeded;
+        this.command = command;
     }
 
     public enum InventoriesDataTypes {
-        HAS_PERMISSION, DONT_HAS_PERMISSION, SELECTED;
+        HAS_PERMISSION, DONT_HAS_PERMISSION, SELECTED, DONT_HAS_PERMISSION_NEEDED;
     }
 
     public String getId() {
@@ -52,7 +55,11 @@ public class InventoriesDataContainer extends AbstractDataMap<InventoriesDataCon
         return slotPos;
     }
 
-    public String getNeedPermission() {
+    public String getPermissionNeeded() {
         return permissionNeeded;
+    }
+
+    public String getCommand() {
+        return command;
     }
 }

@@ -40,8 +40,9 @@ public class InventoriesContainerImpl extends AbstractDataMap<EffectType, Invent
             final SlotPos slotPos = new SlotPos(itemRow, itemColum);
             final double price = this.configEffects.getDouble(rootPath + "Buy.Price");
             final String permissionNeeded = this.configEffects.getString(rootPath + "Buy.Need");
+            final String command = this.configEffects.getString(rootPath + "Buy.Command");
             final InventoriesDataContainer invDataContainer = new InventoriesDataContainer(
-                    idEffect, permissionEffect, item, slotPos, price, permissionNeeded
+                    idEffect, permissionEffect, item, slotPos, price, permissionNeeded, command
             );
             List<String> currentLore;
             currentLore = this.configEffects.getStringList(rootPath + "Lore.HasPermission");
@@ -49,7 +50,9 @@ public class InventoriesContainerImpl extends AbstractDataMap<EffectType, Invent
             currentLore = this.configEffects.getStringList(rootPath + "Lore.DontHasPermission");
             invDataContainer.set(InventoriesDataContainer.InventoriesDataTypes.DONT_HAS_PERMISSION, currentLore);
             currentLore = this.configEffects.getStringList(rootPath + "Lore.Selected");
-            invDataContainer.set(InventoriesDataContainer.InventoriesDataTypes.SELECTED, currentLore);
+            invDataContainer.set(InventoriesDataContainer.InventoriesDataTypes.SELECTED, currentLore);;
+            currentLore = this.configEffects.getStringList(rootPath + "Lore.DontHasPermissionNeeded");
+            invDataContainer.set(InventoriesDataContainer.InventoriesDataTypes.DONT_HAS_PERMISSION_NEEDED, currentLore);
             set(
                     EffectType.getByID(idEffect), invDataContainer
             );
@@ -79,6 +82,11 @@ public class InventoriesContainerImpl extends AbstractDataMap<EffectType, Invent
         final InventoriesDataContainer invDataContainer = get(effectType);
         if (invDataContainer == null) return null;
         final boolean hasPermission = player.hasPermission(invDataContainer.getPermission());
+        final String needPermission = invDataContainer.getPermissionNeeded();
+        final boolean hasPermissionNeeded = player.hasPermission(needPermission);
+        if (!(hasPermissionNeeded) && !(needPermission.equalsIgnoreCase("none"))) {
+            return InventoriesDataContainer.InventoriesDataTypes.DONT_HAS_PERMISSION_NEEDED;
+        }
         if (hasPermission) {
             if (EffectType.getByID(effectsDataContainer.getCurrentEffect()) != effectType) {
                 return InventoriesDataContainer.InventoriesDataTypes.HAS_PERMISSION;

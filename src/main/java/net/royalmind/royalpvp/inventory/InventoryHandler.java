@@ -1,6 +1,7 @@
 package net.royalmind.royalpvp.inventory;
 
 import fr.minuskube.inv.InventoryManager;
+import net.milkbowl.vault.economy.Economy;
 import net.royalmind.royalpvp.data.containers.effects.EffectsContainerImpl;
 import net.royalmind.royalpvp.data.containers.inventory.InventoriesContainerImpl;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -16,13 +17,17 @@ public class InventoryHandler implements Listener {
     private EffectsContainerImpl effectsContainer;
     private InventoryStorage InventoryStorage;
     private FileConfiguration configEffects;
+    private Economy economy;
 
-    public InventoryHandler(final EffectsContainerImpl effectsContainer, final InventoriesContainerImpl inventoriesContainer, final InventoryManager inventoryManager, final FileConfiguration configEffects) {
+    public InventoryHandler(final EffectsContainerImpl effectsContainer, final InventoriesContainerImpl inventoriesContainer,
+                            final InventoryManager inventoryManager, final FileConfiguration configEffects,
+                            final Economy economy) {
         this.effectsContainer = effectsContainer;
         this.inventoriesContainer = inventoriesContainer;
         this.inventoryManager = inventoryManager;
         this.configEffects = configEffects;
-        this.InventoryStorage = new InventoryStorage(this.effectsContainer, this.inventoriesContainer, this.inventoryManager, this.configEffects);
+        this.economy = economy;
+        this.InventoryStorage = new InventoryStorage(this.effectsContainer, this.inventoriesContainer, this.inventoryManager, this.economy);
     }
 
     @EventHandler
