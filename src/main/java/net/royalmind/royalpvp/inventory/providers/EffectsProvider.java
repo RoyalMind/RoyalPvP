@@ -37,23 +37,29 @@ public class EffectsProvider implements InventoryProvider {
                 if (inventoryDataType == null) return;
                 final InventoriesDataContainer inventoriesDataContainer = this.inventoriesContainer.get(type);
                 String message = null;
-                switch (inventoryDataType) {
-                    case SELECTED:
-                        message = "&cYa tienes este efecto.";
-                        break;
-                    case HAS_PERMISSION:
-                        effectsContainer.setCurrentEffect(type.getId());
-                        message = "&aEfecto seleccionado.";
-                        break;
-                    case DONT_HAS_PERMISSION:
-                        buy(player, inventoriesDataContainer);
-                        break;
-                    case DONT_HAS_PERMISSION_NEEDED:
-                        message = "&cNo tienes permisos necesarios para esto.";
+                if (type != EffectType.NONE) {
+                    switch (inventoryDataType) {
+                        case SELECTED:
+                            message = "&cYa tienes este efecto.";
+                            break;
+                        case HAS_PERMISSION:
+                            effectsContainer.setCurrentEffect(type.getId());
+                            message = "&aEfecto seleccionado.";
+                            break;
+                        case DONT_HAS_PERMISSION:
+                            buy(player, inventoriesDataContainer);
+                            break;
+                        case DONT_HAS_PERMISSION_NEEDED:
+                            message = "&cNo tienes permisos necesarios para esto.";
+                    }
+                } else {
+                    effectsContainer.setCurrentEffect(EffectType.NONE.getId());
+                    message = "&cNingun efecto seleccionado!";
                 }
                 if (message != null) {
                     player.sendMessage(Chat.translate(message));
                 }
+                player.closeInventory();
             });
             final SlotPos slot = this.inventoriesContainer.get(type).getSlot();
             contents.set(slot, clickableItem);
