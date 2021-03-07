@@ -1,5 +1,6 @@
 package net.royalmind.royalpvp.data.containers;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,5 +26,9 @@ public abstract class AbstractDataMap<K, V> {
 
     public Boolean contains(final K key) {
         return this.dataMap.containsKey(key);
+    }
+
+    public Collection<V> getValues() {
+        return this.dataMap.values();
     }
 }

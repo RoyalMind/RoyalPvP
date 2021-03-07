@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLevelChangeEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -28,7 +29,7 @@ public class DataHandler implements Listener {
     }
 
     @EventHandler
-    public void onPlayerJoin(final PlayerJoinEvent event) {
+    public void onPlayerJoinEffect(final PlayerJoinEvent event) {
         final Player player = event.getPlayer();
         if (this.plugin.getEffectsContainer().get(player.getUniqueId()) != null) return;
         final String mainTable = this.config.getString("DataBase.Tables.Main");
@@ -95,5 +96,10 @@ public class DataHandler implements Listener {
         if (threadsContainer.get(playerUUID) == null) return;
         final ThreadsDataContainer threadsDataContainer = threadsContainer.get(playerUUID);
         threadsDataContainer.getRunnable().cancel();
+    }
+
+    @EventHandler
+    public void onPlayerLevelUp(final PlayerLevelChangeEvent event) {
+        final Player player = event.getPlayer();
     }
 }

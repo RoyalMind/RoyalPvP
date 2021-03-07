@@ -6,7 +6,9 @@ import net.royalmind.royalpvp.data.DataHandler;
 import net.royalmind.royalpvp.data.DataSource;
 import net.royalmind.royalpvp.data.containers.effects.EffectsContainerImpl;
 import net.royalmind.royalpvp.data.containers.inventory.InventoriesContainerImpl;
+import net.royalmind.royalpvp.data.containers.leagues.LeaguesContainerImpl;
 import net.royalmind.royalpvp.data.containers.threads.ThreadsContainerImpl;
+import net.royalmind.royalpvp.dependencies.PlaceholderDependency;
 import net.royalmind.royalpvp.dependencies.VaultDependency;
 import net.royalmind.royalpvp.effects.EffectsHandler;
 import net.royalmind.royalpvp.inventory.InventoryHandler;
@@ -27,8 +29,10 @@ public final class RoyalPvP extends JavaPlugin {
     private EffectsContainerImpl effectsContainer;
     private InventoriesContainerImpl inventoriesContainer;
     private ThreadsContainerImpl threadsContainer;
+    private LeaguesContainerImpl leaguesContainer;
     //Dependencies
     private VaultDependency vaultDependency;
+    private PlaceholderDependency placeholderDependency;
 
     @Override
     public void onEnable() {
@@ -47,6 +51,13 @@ public final class RoyalPvP extends JavaPlugin {
         }
         final FileConfiguration config = files.getConfig().getFileConfiguration();
         final FileConfiguration configEffects = files.getEffects().getFileConfiguration();
+        final FileConfiguration configLeagues = files.getLeague().getFileConfiguration();
+        if (configLeagues.getBoolean("Enable")) {
+            this.leaguesContainer = new LeaguesContainerImpl(configLeagues);
+            this.placeholderDependency = new PlaceholderDependency(this.leaguesContainer);
+            this.placeholderDependency.register();
+            this.getLogger().info("PlaceholderAPI loaded!");
+        }
         this.inventoriesContainer = new InventoriesContainerImpl(this, configEffects);
         this.threadsContainer = new ThreadsContainerImpl();
         this.effectsContainer = new EffectsContainerImpl(this, config, this.threadsContainer);

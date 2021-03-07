@@ -3,4 +3,5 @@ version: ${project.version}
 main: net.royalmind.royalpvp.RoyalPvP
 authors: [ImSrPanda]
 depend: [Vault]
+softdepend: [PlaceholderAPI]
 description: Caracteristicas para modalidades de PvP
