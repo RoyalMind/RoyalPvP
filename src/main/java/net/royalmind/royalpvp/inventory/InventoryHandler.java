@@ -27,7 +27,7 @@ public class InventoryHandler implements Listener {
         this.inventoryManager = inventoryManager;
         this.configEffects = configEffects;
         this.economy = economy;
-        this.InventoryStorage = new InventoryStorage(this.effectsContainer, this.inventoriesContainer, this.inventoryManager, this.economy);
+        this.InventoryStorage = new InventoryStorage(this.effectsContainer, this.inventoriesContainer, this.inventoryManager, this.economy, this.configEffects);
     }
 
     @EventHandler

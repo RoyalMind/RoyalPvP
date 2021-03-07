@@ -36,7 +36,7 @@ public class InventoriesContainerImpl extends AbstractDataMap<EffectType, Invent
             final String idEffect = this.configEffects.getString(rootPath + "ID");
             final String permissionEffect = this.configEffects.getString(rootPath + "Permission");
             final int itemRow = this.configEffects.getInt(rootPath + "Slot.Row");
-            final int itemColum = this.configEffects.getInt(rootPath + "Slot.Colum");
+            final int itemColum = this.configEffects.getInt(rootPath + "Slot.Column");
             final SlotPos slotPos = new SlotPos(itemRow, itemColum);
             final double price = this.configEffects.getDouble(rootPath + "Buy.Price");
             final String permissionNeeded = this.configEffects.getString(rootPath + "Buy.Need");

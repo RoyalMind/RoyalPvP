@@ -12,19 +12,25 @@ import net.royalmind.royalpvp.data.containers.inventory.InventoriesDataContainer
 import net.royalmind.royalpvp.effects.EffectType;
 import net.royalmind.royalpvp.utils.Chat;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class EffectsProvider implements InventoryProvider {
 
     private InventoriesContainerImpl inventoriesContainer;
     private EffectsContainerImpl effectsContainer;
     private Economy economy;
+    private FileConfiguration configEffects;
 
     public EffectsProvider(final EffectsContainerImpl effectsContainer, final InventoriesContainerImpl inventoriesContainer,
-                           final Economy economy) {
+                           final Economy economy, final FileConfiguration configEffects) {
         this.effectsContainer = effectsContainer;
         this.inventoriesContainer = inventoriesContainer;
         this.economy = economy;
+        this.configEffects = configEffects;
     }
 
     @Override
@@ -64,11 +70,45 @@ public class EffectsProvider implements InventoryProvider {
             final SlotPos slot = this.inventoriesContainer.get(type).getSlot();
             contents.set(slot, clickableItem);
         }
+        //Configurations
+        ClickableItem configItem = ClickableItem.of(getConfigurationItem(effectsContainer, "Sounds"), inventoryClickEvent -> {
+            effectsContainer.setEnableSounds(!(effectsContainer.isEnableSounds()));
+            final ItemStack item = getConfigurationItem(effectsContainer, "Sounds");
+            inventoryClickEvent.setCurrentItem(item);
+        });
+        contents.set(getConfigurationSlot("Sounds"), configItem);
+
+        configItem = ClickableItem.of(getConfigurationItem(effectsContainer, "Particles"), inventoryClickEvent -> {
+            effectsContainer.setEnableParticles(!(effectsContainer.isEnableParticles()));
+            final ItemStack item = getConfigurationItem(effectsContainer, "Particles");
+            inventoryClickEvent.setCurrentItem(item);
+        });
+        contents.set(getConfigurationSlot("Particles"), configItem);
     }
 
     @Override
-    public void update(final Player player, final InventoryContents contents) {
+    public void update(final Player player, final InventoryContents contents) { }
 
+    private SlotPos getConfigurationSlot(final String path) {
+        final int row = this.configEffects.getInt("Configurations." + path + ".Slot.Row");
+        final int column = this.configEffects.getInt("Configurations." + path + ".Slot.Column");
+        return new SlotPos(row, column);
+    }
+
+    private ItemStack getConfigurationItem(final EffectsDataContainer effectContainer, final String path) {
+        final String enable = "Enable";
+        final String disable = "Disable";
+        final String togglePath = (path.equalsIgnoreCase("sounds")) ?
+                (effectContainer.isEnableSounds()) ? enable : disable :
+                (effectContainer.isEnableParticles()) ? enable : disable;
+        final String name = this.configEffects.getString("Configurations." + path + "." + togglePath + ".Name");
+        final String icon = this.configEffects.getString("Configurations." + path + "." + togglePath + ".Icon");
+        final int iconData = this.configEffects.getInt("Configurations." + path + "." + togglePath + ".IconData");
+        final ItemStack itemStack = new ItemStack(Material.getMaterial(icon), 1, ((short) iconData));
+        final ItemMeta itemMeta = itemStack.getItemMeta();
+        itemMeta.setDisplayName(Chat.translate(name));
+        itemStack.setItemMeta(itemMeta);
+        return itemStack;
     }
 
     private void buy(final Player player, final InventoriesDataContainer inventoriesDataContainer) {
